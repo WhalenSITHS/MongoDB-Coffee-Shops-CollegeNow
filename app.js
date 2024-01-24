@@ -1,6 +1,7 @@
 const express = require("express");
 const port = process.env.PORT || 3000;
 const app = express();
+require("./db/mongoose"); //ensures mongoose runs and connects
 const routes = require("./Routes/index");
 //takes raw requests and turns them into usable properties on req.body
 app.use(express.json());
