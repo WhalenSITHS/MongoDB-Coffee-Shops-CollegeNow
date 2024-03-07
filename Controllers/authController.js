@@ -41,3 +41,26 @@ exports.register = async function (req, res) {
     });
   }
 };
+
+exports.login = async (req, res) => {
+  try {
+    let username = req.body.username;
+    let password = req.body.password;
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      throw new Error("Unable to login");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    const token = await generateToken(user);
+    if (!isMatch) {
+      throw new Error("Unable to login");
+    }
+
+    res.send({ user, token });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send("user not found");
+  }
+};
