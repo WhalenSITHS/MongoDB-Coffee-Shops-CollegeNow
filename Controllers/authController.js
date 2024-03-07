@@ -21,7 +21,7 @@ exports.register = async function (req, res) {
     });
     const token = await generateToken(newUser);
     // save the user
-    newUser.save(function (err) {
+    /* newUser.save(function (err) {
       if (err) {
         return res.json({ success: false, msg: "Username already exists." });
       }
@@ -31,6 +31,13 @@ exports.register = async function (req, res) {
         newUser,
         token,
       });
+    }); */
+    await newUser.save();
+    res.json({
+      success: true,
+      msg: "Successful created new user.",
+      newUser,
+      token,
     });
   }
 };
