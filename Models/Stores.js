@@ -12,6 +12,7 @@ const shopSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  photo: String,
   tags: [String],
 });
 shopSchema.pre("save", function (next) {
