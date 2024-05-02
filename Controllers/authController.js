@@ -43,6 +43,7 @@ exports.register = async function (req, res) {
 };
 
 exports.login = async (req, res) => {
+  console.log(req.body.username);
   try {
     let username = req.body.username;
     let password = req.body.password;

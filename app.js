@@ -7,6 +7,7 @@ let corsOptions = {
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
+
 require("./db/mongoose"); //ensures mongoose runs and connects
 const routes = require("./Routes/index");
 //takes raw requests and turns them into usable properties on req.body
